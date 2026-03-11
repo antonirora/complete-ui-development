@@ -18,9 +18,28 @@ This document defines mandatory practices for building production-quality UI wit
 ### If Reference UI Exists (Optional)
 When the user provides a reference URL or mentions a UI they like:
 ```bash
-npx playwright test playwright/analyze-reference.spec.ts
+REFERENCE_URL=https://example.com npx playwright test playwright/analyze-reference.spec.ts
 ```
-Review extracted tokens in `./reference-design-tokens.json` before designing.
+
+The interactive analyzer will:
+1. **Discover pages** - Click through navigation and screenshot each page
+2. **Extract design tokens** - Colors, typography, spacing, shadows, transitions
+3. **Capture interactions** - Open dropdowns, modals, tabs, accordions
+4. **Detect hover states** - Compare before/after styles on interactive elements
+5. **Analyze inputs** - Find all form inputs with recommended input methods
+6. **Test responsiveness** - Screenshot at mobile, tablet, desktop breakpoints
+7. **Open mobile menus** - Find and capture hamburger menu states
+
+**Output files:**
+- `reference-analysis/summary.md` - Human-readable report
+- `reference-analysis/report.json` - Complete analysis data
+- `reference-analysis/design-tokens.json` - Extracted design system
+- `reference-analysis/pages/` - Page screenshots
+- `reference-analysis/components/` - Component screenshots
+- `reference-analysis/interactions/` - Dropdown, modal, hover screenshots
+- `reference-analysis/responsive/` - Breakpoint screenshots
+
+Review `summary.md` before designing to understand the reference UI's patterns.
 
 ### Clarify Requirements
 Before writing any code, confirm:
