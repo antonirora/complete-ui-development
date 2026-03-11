@@ -1,0 +1,17 @@
+{
+  "name": "complete-ui-development",
+  "version": "1.0.0",
+  "description": "UI Development Protocol with iterative Playwright validation",
+  "scripts": {
+    "ui-check": "npx playwright test playwright/ui-check.spec.ts",
+    "analyze-ref": "npx playwright test playwright/analyze-reference.spec.ts",
+    "e2e": "npx playwright test playwright/e2e/",
+    "e2e:headed": "npx playwright test playwright/e2e/ --headed",
+    "test": "npx playwright test",
+    "test:headed": "npx playwright test --headed",
+    "report": "npx playwright show-report"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.40.0"
+  }
+}
